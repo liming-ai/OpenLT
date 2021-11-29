@@ -38,7 +38,7 @@ ${\dagger}$ means the reported results are copied from [LADE](https://arxiv.org/
 | LDAM-DRW | CIFAR100-LT | 42.04 | **42.9** |
 | LogitAdjust | CIFAR100-LT | 43.89 | **45.3** |
 | BalanceSoftmax$^{\dagger}$ | CIFAR100-LT | 45.1 | **46.47** |
-| MiSLAS | CIFAR100-LT | 47 | **47.38** |
+
 ## Requirement
 ### Packages
 * Python >= 3.7, < 3.9
