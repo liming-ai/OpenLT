@@ -73,8 +73,7 @@ data
     ├── iNaturalist18_val.txt
     └── train_val2018
 ```
-## Tiny ImageNet-LT (Optional)
-Considering the time-consuming training of the entire ImageNet-LT dataset, we evenly selected 200 classes from the 1000 classes according to the number of classes to construct the Tiny ImageNet-LT dataset and kept the imbalance ratio unchanged. This smaller dataset can be used for quick verification of an idea or hyperparameter tuning. Please see [here](utils/generate_tiny_imagenet_lt.py) for more details.
+
 ## Training and Evaluation Instructions
 #### Single Stage Training
 ```
