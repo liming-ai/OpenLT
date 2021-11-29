@@ -1,0 +1,62 @@
+{
+    "name": "R10_LDAM_Cosine_classifier_StepLR_Mixup_alpha_0.2_512_0.2_5e-4_90e",
+    "n_gpu": 2,
+    "arch": {
+        "type": "ResNet10Model",
+        "args": {
+            "num_classes": 1000,
+            "reduce_dimension": false,
+            "classifier": "cosine",
+            "use_norm": true,
+            "returns_feat": true,
+            "num_experts": 1
+        }
+    },
+    "data_loader": {
+        "type": "ImageNetLTDataLoader",
+        "args": {
+            "data_dir": "data/ImageNet_LT",
+            "batch_size": 512,
+            "shuffle": true,
+            "num_workers": 16
+        }
+    },
+    "optimizer": {
+        "type": "SGD",
+        "args": {
+            "lr": 0.2,
+            "weight_decay": 0.0005,
+            "momentum": 0.9,
+            "nesterov": true
+        }
+    },
+    "add_extra_info": false,
+    "loss": {
+        "type": "LDAMLoss",
+        "args": {
+
+        }
+    },
+    "mixup": {
+        "alpha": 0.2
+    },
+    "metrics": [
+        "accuracy"
+    ],
+    "lr_scheduler": {
+        "type": "CosineAnnealingLR",
+        "args": {
+            "T_max": 90,
+            "eta_min": 0.0
+        }
+    },
+    "trainer": {
+        "epochs": 90,
+        "val_start_epoch": 0,
+        "save_dir": "saved/ImageNet_LT/R10",
+        "save_period": 10,
+        "verbosity": 2,
+        "monitor": "max val_accuracy",
+        "tensorboard": true
+    }
+}

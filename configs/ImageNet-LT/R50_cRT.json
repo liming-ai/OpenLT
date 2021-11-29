@@ -1,0 +1,62 @@
+{
+    "name": "cRT_CE_10e_base_R50_CE_Cosine_classifier_StepLR_StandardAug_256_0.1_5e-4_180e",
+    "n_gpu": 3,
+    "arch": {
+        "type": "ResNet50Model",
+        "args": {
+            "num_classes": 1000,
+            "reduce_dimension": false,
+            "classifier": "cosine",
+            "use_norm": false,
+            "returns_feat": true,
+            "num_experts": 1
+        }
+    },
+    "data_loader": {
+        "type": "ImageNetLTDataLoader",
+        "args": {
+            "data_dir": "data/ImageNet_LT",
+            "batch_size": 256,
+            "shuffle": true,
+            "num_workers": 16,
+            "balanced": true
+        }
+    },
+    "optimizer": {
+        "type": "SGD",
+        "args":{
+            "lr": 0.1,
+            "weight_decay": 5e-4,
+            "momentum": 0.9,
+            "nesterov": true
+        }
+    },
+    "add_extra_info": false,
+    "loss": {
+        "type": "CrossEntropyLoss",
+        "args": {
+
+        }
+    },
+    "resume_state_dict_only": false,
+    "metrics": [
+        "accuracy"
+    ],
+    "lr_scheduler": {
+        "type": "CosineAnnealingLR",
+        "args": {
+            "T_max": 10,
+            "eta_min": 0.0
+        }
+    },
+    "trainer": {
+        "epochs": 10,
+        "val_start_epoch": 0,
+        "save_dir": "saved/ImageNet_LT/R50",
+        "save_period": 40,
+        "verbosity": 2,
+
+        "monitor": "max val_accuracy",
+        "tensorboard": true
+    }
+}
